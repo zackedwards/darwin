@@ -1,0 +1,111 @@
+{
+  "_about": "Field guide for this file. Keys starting with _ are documentation; the code ignores them.",
+  "_fields": {
+    "schedule": "Name of the retention schedule, printed in the report header and the run banner.",
+    "schedule_note": "Free text shown nowhere; a reminder to whoever edits this file.",
+    "agency_domain": "The agency's email domain. Used by the synthetic generator; reserved for future sender rules.",
+    "default_series": "Series id used when the model says RECORD but names a series not in this list. Must match a series.id below.",
+    "transitory.gs1sl_item": "Schedule item number for transitory messages; shown in the report's By category table.",
+    "transitory.title": "Display name for that item.",
+    "transitory.retention": "Retention wording quoted from the schedule.",
+    "transitory.window_days": "The agency's definition of 'administrative value is lost', in days. Transitory mail older than this is proposed for deletion; younger is RETAIN_PENDING.",
+    "series[].id": "Short uppercase id. The model answers with this; the database and report group by it.",
+    "series[].gs1sl_item": "Schedule item number, for citation in the report.",
+    "series[].name": "Series title as the schedule gives it. The model sees it.",
+    "series[].retention": "Retention wording quoted verbatim from the schedule. Not interpreted by the code.",
+    "series[].retention_years": "Integer years used to compute retain_until, or null for permanent. Fiscal-year rounding is not applied.",
+    "series[].description": "One or two sentences the model reads to decide whether a message belongs here. Write what belongs AND what does not; this text is what makes classification accurate."
+  },
+  "schedule": "Florida GS1-SL, General Records Schedule for State and Local Government Agencies (2017 edition)",
+  "schedule_note": "Item numbers and retention wording quoted from GS1-SL 2017. Verify against your own state's current schedule before production use.",
+  "agency_domain": "cityofexample.gov",
+  "default_series": "ADMIN_CORR",
+  "transitory": {
+    "gs1sl_item": "146",
+    "title": "Transitory Messages",
+    "retention": "Retain until obsolete, superseded, or administrative value is lost.",
+    "window_days": 30
+  },
+  "series": [
+    {
+      "id": "CONTRACTS",
+      "gs1sl_item": "65",
+      "name": "Contracts/Leases/Agreements: Non-Capital Improvement",
+      "retention": "5 fiscal years after completion or termination of contract/lease/agreement.",
+      "retention_years": 5,
+      "description": "Contracts, leases, agreements, amendments, statements of work, award letters, procurement of goods and services."
+    },
+    {
+      "id": "PERSONNEL",
+      "gs1sl_item": "162",
+      "name": "Personnel Records: Non-Florida Retirement System (Local Government)",
+      "retention": "50 fiscal years after any manner of separation or termination of employment.",
+      "retention_years": 50,
+      "description": "Hiring, evaluations, discipline, leave, benefits, separation, anything about a named employee's employment."
+    },
+    {
+      "id": "DISBURSEMENT",
+      "gs1sl_item": "340",
+      "name": "Disbursement Records: Detail",
+      "retention": "5 fiscal years after transaction completed.",
+      "retention_years": 5,
+      "description": "Invoices, purchase orders, requisitions, payments, p-card receipts, accounts payable."
+    },
+    {
+      "id": "LITIGATION",
+      "gs1sl_item": "27",
+      "name": "Litigation Case Files",
+      "retention": "5 anniversary years after case closed or appeal process expired.",
+      "retention_years": 5,
+      "description": "Lawsuits, claims, litigation holds, attorney correspondence about a dispute."
+    },
+    {
+      "id": "INFO_REQUEST",
+      "gs1sl_item": "23",
+      "name": "Information Request Records",
+      "retention": "1 fiscal year.",
+      "retention_years": 1,
+      "description": "Requests from members of the public for public records or information, and the agency's responses. Not internal follow-ups between staff."
+    },
+    {
+      "id": "MINUTES",
+      "gs1sl_item": "32",
+      "name": "Minutes: Official Meetings",
+      "retention": "Permanent.",
+      "retention_years": null,
+      "description": "Council, board or commission agendas, minutes, resolutions, votes, official actions."
+    },
+    {
+      "id": "PERMITS",
+      "gs1sl_item": "286",
+      "name": "Permits: Building",
+      "retention": "10 anniversary years.",
+      "retention_years": 10,
+      "description": "Permit applications, approvals, inspection results, code enforcement notices."
+    },
+    {
+      "id": "GRANTS",
+      "gs1sl_item": "422",
+      "name": "Grant Files",
+      "retention": "5 fiscal years after completion of grant cycle or project.",
+      "retention_years": 5,
+      "description": "Grant applications, awards, reporting, grant-funded program administration."
+    },
+    {
+      "id": "POLICY_CORR",
+      "gs1sl_item": "338",
+      "name": "Correspondence and Memoranda: Program and Policy Development",
+      "retention": "5 fiscal years.",
+      "retention_years": 5,
+      "description": "Correspondence documenting policy decisions, procedures, or substantive program activity."
+    },
+    {
+      "id": "ADMIN_CORR",
+      "gs1sl_item": "17",
+      "name": "Correspondence and Memoranda: Administrative",
+      "retention": "3 fiscal years.",
+      "retention_years": 3,
+      "description": "Correspondence that documents an administrative action, instruction or announced procedure with operational effect and fits no other series. Not scheduling, thanks, reminders or social notes."
+    }
+  ]
+}
