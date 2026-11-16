@@ -3,3 +3,4 @@ retain.db
 report/
 quarantine/
 *.log
+RUNBOOK.md

@@ -308,8 +308,8 @@ class Model:
         self.default_series = policy["default_series"]
         # One bullet per series, built once; this is the {series} block of PROMPT.
         self.series_text = "\n".join(f"- {s['id']}: {s['name']}. {s['description']}" for s in policy["series"])
-        # Pull the bare host out of http://host:port/path without urllib.parse,
-        # which would accept odd forms like "http://127.0.0.1@evil.com".
+        # Pull the bare host out of scheme://host:port/path by hand rather than
+        # with urllib.parse, which accepts userinfo tricks like "127.0.0.1@evil.com".
         host = self.url.split("//", 1)[-1].split("/")[0].split(":")[0]
         if host not in ("127.0.0.1", "localhost", "::1"):
             raise SystemExit(f"Refusing model endpoint {self.url}: email content may only go to a model on this machine.")
